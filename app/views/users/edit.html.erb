@@ -1,0 +1,34 @@
+<% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+   <% end %>
+<%= render 'users/errors', user: @user %>
+
+<div class = "container">
+ <div class = "row">
+   <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+        <%= form_with model: @user do |f| %>
+
+        <div class="form-group">
+          <h4>Name</h4>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
+        </div>
+        <div class="form-group">
+          <h4>Image</h4>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+          </div>
+        <div class="form-group">
+          <h4>Introduction</h4>
+          <%= f.text_area :introduction %>
+        </div>
+        <div class="form-group">
+        <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+        </div>
+        <% end %>
+
+
+   </div>
+  </div>
+</div>
